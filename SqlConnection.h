@@ -60,9 +60,9 @@ public:
         sql::ResultSet* result = statement->executeQuery("SELECT keyvalue_key from keyvalues WHERE keyvalue_key=\'" + key + "\';");
 
         if(result->next()) {
-            result = statement->executeQuery("UPDATE keyvalues SET keyvalue_value=\'" + value + "\' WHERE keyvalue_key=\'" + key + "\';");
+            result = statement->execute("UPDATE keyvalues SET keyvalue_value=\'" + value + "\' WHERE keyvalue_key=\'" + key + "\';");
         } else {
-            result = statement->executeQuery("INSERT INTO keyvalues VALUES(\'" + key + "\', \'" + value + "\');");
+            result = statement->execute("INSERT INTO keyvalues VALUES(\'" + key + "\', \'" + value + "\');");
         }
         delete result;
         delete statement;
